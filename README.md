@@ -9,3 +9,6 @@ ISO files can be found [here](https://drive.google.com/drive/folders/18ejyXTB1vs
 
 ## pc_specs
 Under development, but will contain a program for gathering the specs of computer hardware.
+
+#License
+gpl-3.0
