@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from tkinter import *
 import tkinter as tk
 from GUI_helper import *
@@ -6,12 +8,17 @@ import math
 monitor=[]
 monitorData={}
 queue=[]
+ignore_list=[];
 
 #------------------------------------------------
 
 def refresh(event=None):
-    data=refresh_information()
-    num=1
+    data=refresh_information(ignore_list)
+    num=0
+    
+    if(num>len(data)-1):
+        print("ERROR: Selected Monitor Not Found")
+        return
 
     monitor[0][1].delete(0, tk.END)
     monitor[0][1].insert(0, data[num]["vendor"].title())
@@ -105,6 +112,10 @@ def generateButtonsGrid(base):
     generateGrid(grid, ["NSEW"])
     return grid
 
+
+with open(os.path.expanduser("~/.config/ReUseAutomation/monitor_specs/ignore.txt")) as ignore_file:
+    for line in ignore_file:
+        ignore_list.append(line.strip())
 
 root=Tk()
 monitorData={

@@ -2,7 +2,7 @@ import subprocess
 import re
 import os
 
-def refresh_information():
+def refresh_information(ignore):
     print("Refreshing...")
     final=[]
     data=str(subprocess.check_output(['hwinfo', '--monitor'])).split("\\n\\n")
@@ -11,8 +11,9 @@ def refresh_information():
         ret["size"]=re.findall('Size: (\d+)x(\d+) mm', mon)[0]
         ret["resolution"]=re.findall('     Resolution: (\d+x\d+)', mon)[0]
         ret["vendor"]=re.findall('Vendor: (["\w\s]+)', mon)[0].replace("\"", "").split()[-1]
-        ret["ID"]=re.findall('Unique ID: ([\w.]+)', mon)[0]
-        final.append(ret)
+        ret["ID"]=re.findall('Serial ID: "([\w.]+)"', mon)[0]
+        if(ret["ID"] not in ignore):
+            final.append(ret)
     return final
 
 
@@ -20,6 +21,10 @@ def refresh_information():
 
 def flushQueue(queue): 
     print("Printing...")
+    printer= open(os.path.expanduser('~/.config/ReUseAutomation/monitor_specs/printer.txt'), "r")
+    printer_name=printer.readline().strip()
+    print("Using : " +printer_name)
+    printer.close()
     num=0
     header = '''<!DOCTYPE html>                                                    
                 <html>
@@ -53,7 +58,7 @@ def flushQueue(queue):
             htmlFile.write(doc)
             htmlFile.close()
             os.system("wkhtmltopdf ./temp.html temp.pdf")
-            os.system("lpr -P HP-LaserJet-P2015-Series temp.pdf")
+            os.system("lpr -P "+printer_name+" temp.pdf")
             doc=header
             num=0
     if(num>0):
@@ -62,6 +67,5 @@ def flushQueue(queue):
         htmlFile.write(doc)
         htmlFile.close()
         os.system("wkhtmltopdf ./temp.html temp.pdf")
-        os.system("lpr -P 'hp-LaserJet-1320-series' temp.pdf")
-
+        os.system("lpr -P "+printer_name+" temp.pdf")
 
