@@ -23,9 +23,10 @@ fi
 read -p "Update Witelist (leave empty to skip): "
 if [ ! -z "$REPLY" ] 
 then
+	dir=`dirname $0`
 	echo "Whitelisting current monitors..."
-	python3 ./init.py > ~/.config/ReUseAutomation/monitor_specs/ignore.txt
-	python3 ./init.py
+	python3 "$dir"/init.py > ~/.config/ReUseAutomation/monitor_specs/ignore.txt
+	python3 "$dir"/init.py
 else 
 	echo "Skipping..."
 fi
