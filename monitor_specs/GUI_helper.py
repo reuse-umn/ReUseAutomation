@@ -8,15 +8,20 @@ def refresh_information(ignore):
     data=str(subprocess.check_output(['hwinfo', '--monitor'])).split("\\n\\n")
     for mon in data:
         ret={}
-        ret["size"]=re.findall('Size: (\d+)x(\d+) mm', mon)[0]
-        ret["resolution"]=re.findall('     Resolution: (\d+x\d+)', mon)[0]
-        ret["vendor"]=re.findall('Vendor: (["\w\s]+)', mon)[0].replace("\"", "").split()[-1]
-        ret["ID"]=re.findall('Serial ID: "([\w.]+)"', mon)[0]
+        ret["size"]=getFirst(re.findall('Size: (\d+)x(\d+) mm', mon))
+        ret["resolution"]=getFirst(re.findall('     Resolution: (\d+x\d+)', mon))
+        ret["vendor"]=getFirst(re.findall('Vendor: (["\w\s]+)', mon)).replace("\"", "").split()[-1]
+        ret["ID"]=getFirst(re.findall('Serial ID: "([\w.]+)"', mon))
         if(ret["ID"] not in ignore):
             final.append(ret)
     return final
 
-
+def getFirst(arr):
+    if(len(arr)==0):
+        print("...Value Not Found")
+        return None
+    else:
+        return arr[0]
 
 
 def flushQueue(queue): 
