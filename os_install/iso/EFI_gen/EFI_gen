@@ -1,19 +1,33 @@
 #!/bin/bash
 
+sudo echo "Starting..."
+
 DEV=$1
 IF=$2
 
 sudo umount /dev/"$DEV"* &> /dev/null
-sudo dd if="$IF" of=/dev/"$DEV" bs=10M count=1000 status=progress
+sudo dd if="$IF" of=/dev/"$DEV" bs=10M status=progress
+
+sync
+sleep 0.5
 
 sudo umount /dev/"$DEV"* &> /dev/null
 (echo r; echo d; echo w; echo Y;) | sudo gdisk /dev/"$DEV"
 
+sync
+sleep 0.5
+
 sudo umount /dev/"$DEV"* &> /dev/null 
-(echo d; echo 2;  echo n; echo 2; echo ""; echo ""; echo N; echo w;) | sudo fdisk /dev/"$DEV"
+printf ", +" | sudo sfdisk -N 2 /dev/"$DEV"
+
+sync
+sleep 0.5
 
 sudo umount /dev/"$DEV"* &> /dev/null
 yes | sudo e2fsck -f /dev/$"$DEV"2 -p
+
+sync
+sleep 0.5
 
 sudo umount /dev/"$DEV"* &> /dev/null
 sudo resize2fs /dev/$"$DEV"2

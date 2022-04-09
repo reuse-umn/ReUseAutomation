@@ -41,13 +41,10 @@ def get_iso_roms(iso_dir):
         else:
             rom['about']=rom['name']
 
-        if(rom['name']+'.iso' in files):
-            if(rom['name'] in files):
-                valid_roms.append(rom)
-            else:
-                print('Missing executable for: '+rom['name'])
+        if(rom['name'] in files):
+            valid_roms.append(rom)
         else:
-            print('Missing .iso for: '+rom['name'])
+            print('Missing executable for: '+rom['name'])
     return valid_roms
 
 
