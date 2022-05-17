@@ -129,7 +129,7 @@ monitorData={
         "resolution_val" : StringVar()}
 root.title("Monitor Information")
 root.bind("<Control-r>", refresh)
-root.bind("<Control-Return>", add)
+root.bind("<Control-a>", add)
 root.bind("<Control-p>", print_file)
 fr_entry=Frame(master=root, width=150)
 fr_buttons=Frame(master=root, width=50)
