@@ -2,4 +2,5 @@
 **/iso/**
 ./monitor_specs/temp.*
 */__pycache__/*
-
+temp.*
+*.tmp
