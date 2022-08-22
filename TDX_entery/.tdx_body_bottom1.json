@@ -1,11 +1,9 @@
 {
     "type": "script",
-    "description": "tdx_ST",
+    "description": "tdx_body_bottom",
     "store": {},
-    "modes": [
-        3
-    ],
-    "usageCount": 3,
+    "modes": [],
+    "usageCount": 0,
     "prompt": false,
     "omitTrigger": false,
     "showInTrayMenu": false,
@@ -19,7 +17,7 @@
     },
     "hotkey": {
         "modifiers": [],
-        "hotKey": "<f8>"
+        "hotKey": null
     },
     "filter": {
         "regex": null,
