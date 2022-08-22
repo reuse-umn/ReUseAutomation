@@ -1,0 +1,12 @@
+delay = 1
+keyboard.send_keys("\t\t\t\t\t")
+keyboard.send_keys("Stock")
+time.sleep(delay)
+keyboard.send_keys("\tdisposal")
+time.sleep(delay)
+keyboard.send_keys("\t\t\t\t\t ")
+keyboard.send_keys("\t\t10293")
+time.sleep(delay*3)
+keyboard.send_keys("\t\t\t\tahcware")
+time.sleep(delay*2)
+keyboard.send_keys("\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t")
