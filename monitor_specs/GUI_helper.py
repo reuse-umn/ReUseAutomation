@@ -11,7 +11,7 @@ def refresh_information(ignore):
         ret["size"]=getFirst(re.findall('Size: (\d+)x(\d+) mm', mon))
         ret["resolution"]=getFirst(re.findall('     Resolution: (\d+x\d+)', mon))
         ret["vendor"]=getFirst(re.findall('Vendor: (["\w\s]+)', mon)).replace("\"", "").split()[-1]
-        ret["ID"]=getFirst(re.findall('Serial ID: "([\w.]+)"', mon))
+        ret["ID"]=getFirst(re.findall('Unique ID: ([\w.]+)', mon))
         if(ret["ID"] not in ignore):
             final.append(ret)
     return final
