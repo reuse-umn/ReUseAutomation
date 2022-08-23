@@ -2,10 +2,8 @@
     "type": "script",
     "description": "tdx_SN",
     "store": {},
-    "modes": [
-        3
-    ],
-    "usageCount": 84,
+    "modes": [],
+    "usageCount": 85,
     "prompt": false,
     "omitTrigger": false,
     "showInTrayMenu": false,

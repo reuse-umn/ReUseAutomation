@@ -1,10 +1,8 @@
 {
     "type": "folder",
     "title": "TDX_entery",
-    "modes": [
-        3
-    ],
-    "usageCount": 0,
+    "modes": [],
+    "usageCount": 1,
     "showInTrayMenu": false,
     "abbreviation": {
         "abbreviations": [],

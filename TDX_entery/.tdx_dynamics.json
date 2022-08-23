@@ -2,9 +2,7 @@
     "type": "script",
     "description": "tdx_dynamics",
     "store": {},
-    "modes": [
-        3
-    ],
+    "modes": [],
     "usageCount": 8,
     "prompt": false,
     "omitTrigger": false,

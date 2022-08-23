@@ -2,9 +2,7 @@
     "type": "script",
     "description": "tdx_comment",
     "store": {},
-    "modes": [
-        3
-    ],
+    "modes": [],
     "usageCount": 24,
     "prompt": false,
     "omitTrigger": false,

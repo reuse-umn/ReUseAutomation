@@ -2,9 +2,7 @@
     "type": "script",
     "description": "tdx_repair",
     "store": {},
-    "modes": [
-        3
-    ],
+    "modes": [],
     "usageCount": 42,
     "prompt": false,
     "omitTrigger": false,
