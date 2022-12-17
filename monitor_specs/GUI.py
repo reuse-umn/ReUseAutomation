@@ -49,6 +49,10 @@ def add(event=None):
     print("Q: "+str(len(queue))+"; Added: "+data["vendor"]+" - "+data["size"])
 
 
+def remove(event=None):
+    data = queue.pop()
+    print("Q: "+str(len(queue))+"; Removed: "+data["vendor"]+" - "+data["size"])
+
 def print_file(event=None):
     global queue
     if(len(queue)!=0):
@@ -108,6 +112,7 @@ def generateButtonsGrid(base):
     grid.append([Button(base, text="Add", command=add)])
     grid.append([Button(base, text="Refresh", command=refresh)]) 
     grid.append([Button(base, text="Print", command=print_file)])
+    grid.append([Button(base, text="(Remove)", command=remove)])
 
     generateGrid(grid, ["NSEW"])
     return grid
