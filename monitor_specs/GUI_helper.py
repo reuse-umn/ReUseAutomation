@@ -51,7 +51,7 @@ def flushQueue(queue):
     '''
     doc=header
     for mon in queue:
-        if(num<5):
+        if(num<4):
             HTML_TITLE = '{} {}" Monitor'.format(mon["vendor"], mon["size"])
             HTML_DIM = mon["resolution"]
             HTML_INT = mon["interfaces"]

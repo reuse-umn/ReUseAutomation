@@ -55,9 +55,16 @@ def remove(event=None):
 
 def print_file(event=None):
     global queue
+    global old_queue
     if(len(queue)!=0):
+        old_queue = queue.copy()
         flushQueue(queue)
     queue=[]
+
+def reprint_file(event=None):
+    global old_queue
+    if(len(old_queue)!=0):
+        flushQueue(old_queue)
 
 #------------------------------------------------
 
@@ -113,6 +120,7 @@ def generateButtonsGrid(base):
     grid.append([Button(base, text="Refresh", command=refresh)]) 
     grid.append([Button(base, text="Print", command=print_file)])
     grid.append([Button(base, text="(Remove)", command=remove)])
+    grid.append([Button(base, text="(Reprint)", command=reprint_file)])
 
     generateGrid(grid, ["NSEW"])
     return grid
