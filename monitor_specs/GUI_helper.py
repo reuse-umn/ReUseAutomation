@@ -33,10 +33,14 @@ def flushQueue(queue):
     num=0
     header = '''<!DOCTYPE html>                                                    
                 <html>
+                <meta charset="UTF-8"> 
                 <body>'''
     footer=''' </body>
                 </html> '''
     body='''
+    <h2 style="font-family:sans-serif;
+    position:relative; text-align:center; font-size:80px; top:0px; margin-top: 0px; margin-bottom: 0px">{}</h2>
+
     <h1 style="font-family:sans-serif;
     position:relative; text-align:center; font-size:80px; top:0px; margin-top: 0px; margin-bottom: 0px">{}</h1>
 
@@ -51,26 +55,27 @@ def flushQueue(queue):
     '''
     doc=header
     for mon in queue:
-        if(num<4):
+        if(num<3):
+            HTML_TESTED = "☑ <i>Tested</i> ☑"
             HTML_TITLE = '{} {}" Monitor'.format(mon["vendor"], mon["size"])
             HTML_DIM = mon["resolution"]
             HTML_INT = mon["interfaces"]
-            doc += body.format(HTML_TITLE, HTML_DIM, HTML_INT)
+            doc += body.format(HTML_TESTED, HTML_TITLE, HTML_DIM, HTML_INT)
             num+=1
         else:
             doc+=footer
-            htmlFile = open("./temp.html", 'w')
+            htmlFile = open("/tmp/temp.html", 'w')
             htmlFile.write(doc)
             htmlFile.close()
-            os.system("wkhtmltopdf ./temp.html temp.pdf")
-            os.system("lpr -P "+printer_name+" temp.pdf")
+            os.system("wkhtmltopdf /tmp/temp.html /tmp/temp.pdf")
+            os.system("lpr -P "+printer_name+" /tmp/temp.pdf")
             doc=header
             num=0
     if(num>0):
         doc+=footer
-        htmlFile = open("./temp.html", 'w')
+        htmlFile = open("/tmp/temp.html", 'w')
         htmlFile.write(doc)
         htmlFile.close()
-        os.system("wkhtmltopdf ./temp.html temp.pdf")
-        os.system("lpr -P "+printer_name+" temp.pdf")
+        os.system("wkhtmltopdf /tmp/temp.html /tmp/temp.pdf")
+        os.system("lpr -P "+printer_name+" /tmp/temp.pdf")
 
