@@ -29,7 +29,7 @@ There are several optimizations to this page:
 1. Automatically populate the asset's serial number and name fields.
 2. Automatically populate the asset's HDD SN field.
 3. The ```F1``` key will automatically set most fields to represent an asset to kept for resale. The title will say *Pending Repair*.
-4. The ```F2``` key will automatically set most fields to represent an asset to kept for parts. The title will say *Pending Disposal*.
+4. The ```F2``` key will automatically set most fields to represent an asset to be recycled. The title will say *Pending Disposal*.
 5. The ```F3``` key will automatically add a comment to the asset saying there was no HDD in the asset.
 6. The ```F4``` key will automatically add a comment to the asset, moving the cursor to the HDD SN field. The HDD's SN should then be scanned, including the line-break at the end. The line-break is necessary for the script to parse the SN for the field at the bottom of the document. 
 7. The ```F12``` key will automatically set the asset's status to sold, automatically entering the edit mode and pressing the save button.
