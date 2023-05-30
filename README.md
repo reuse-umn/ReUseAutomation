@@ -6,7 +6,7 @@ Contains the GUI.py file that is designed to automate monitor information gather
 ### Usage
 1. Run the [```reuse_monitor_spec```](./reuse_monitor_spec) script. *Note: This is the same as [```monitor_specs/GUI.py```](./monitor_specs/GUI.py).*
 2. Use the *Refresh* button to update the current monitor information. 
-3. Update any incorrect or missing information, then click *Add* to add the monitor to the list.
+3. Update any incorrect or missing information, then click *Add* to add the monitor to the internal queue.
 4. Repeat steps 2 and 3 until all monitors have been added. *Note: The current list of monitors can be viewed from the terminal.*
 5. Click the *Print* button to print the list of monitors to the printer. This will empty the list of monitors.
 
