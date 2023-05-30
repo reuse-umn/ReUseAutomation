@@ -35,15 +35,7 @@ The .conf file should contain one line of text. That line will be displayed in t
 
 
 ## [GreaseMonkey](./TDX/)
-### Usage
-Script used to interface with the TDX asset modification form:
-- F1 Sets the form to have the asset repaired.
-- F2 Sets the form to have the asset recycled.
-- F3 Adds the HDD comment with no HDD present.
-- F4 Adds the HDD comment with a single HDD.
-- F5 Moves the Cursor to the SN entery field. 
-- F6 Moves the Cursor to the Name field and pressing tab will move to the ST entery field.
-- F12 Submits the form.
+### [**Read this for documentation**](./TDX/)
 
 This script may provide diffrent values in the text boxes for dropdowns, but the actual values being submitted are correct.
 
