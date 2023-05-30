@@ -20,15 +20,19 @@ There are two configurtion files:
 1. *Monitor Allowlist* - This file contains a list of any monitors that should not be detected by the program. This is useful for preventing the program from detecting the computers's own monitors. 
 2. *Printer Name* - This file contains the name of the printer that the program should print to. 
 
+To ignore all presently connected monitors, do not leave the *Monitor Allowlist* prompt empty when running the [```/monitor_specs/init.sh```](./monitor_specs/init.sh) script.
+
+To add a printer, run the [```/monitor_specs/init.sh```](./monitor_specs/init.sh) script and enter the name of the printer when prompted. The script should automatically list all printers connected to the computer. If the printer is not listed, make sure that the printer is connected and turned on.
+
 ## [```os_install```](./os_install)
 Contains the os_clone BASH script used for writing OSs to hard drives.
 ISO files can be found [here](https://drive.google.com/drive/folders/18ejyXTB1vsjlzQfxChp4izIAkGgJYXoE?usp=sharing).
 
 ![image](https://user-images.githubusercontent.com/43316251/162587454-0e244102-0a49-49b6-9daf-89cb994373fc.png)
 
-This program will check for images in the _os_install/iso/_ directory. Each image is composed of a base folder that needs to have a executable of the same name and optionally a conf file also with the folder's name to give a discription. Folder _/foo/_ will have the executable _/foo/foo_, but many images will often have _/foo/foo.conf_ and sometimes a _/foo/bar.iso_ if desired. 
+This program will check for images in the _os_install/iso/_ directory. Each image is composed of a base folder that needs to have a executable of the same name and optionally a conf file also with the folder's name to give a description. Folder _/foo/_ will have the executable _/foo/foo_, but many images will often have _/foo/foo.conf_ and sometimes a _/foo/bar.iso_ if desired. 
 
-The job of the executable is to completely handle the disk operations, being passed two peramiters, The first peramiter is the name of the device in /dev/ and the second is the path to _/foo/foo.iso_. _(Note: this arguemnt can be ignored)._
+The job of the executable is to completely handle the disk operations, being passed two parameters, The first parameter is the name of the device in /dev/ and the second is the path to _/foo/foo.iso_. _(Note: this argument can be ignored)._
 
 The .conf file should contain one line of text. That line will be displayed in the GUI.
 
