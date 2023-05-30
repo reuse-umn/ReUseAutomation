@@ -34,7 +34,7 @@ The .conf file should contain one line of text. That line will be displayed in t
 
 
 
-## GreaseMonkey
+## [GreaseMonkey](./TDX/)
 ### Usage
 Script used to interface with the TDX asset modification form:
 - F1 Sets the form to have the asset repaired.
