@@ -37,9 +37,17 @@ There are several optimizations to this page:
 
 ### Usage
 
-A typical workflow will go as follows:
+**A typical workflow will go as follows if the asset already exists:**
 1. Open an asset.
 4. Press ```Esc``` to edit the asset.
+3. Press ```F1``` or ```F2``` to set the asset's status.
+4. Press ```F3``` or ```F4``` to add a comment. If ```F4``` is pressed, scan the HDD SN.
+5. Press ```Esc``` to save the asset.
+6. Press ```Ctrl+W``` to close the asset page.
+
+
+**A typical workflow will go as follows if the asset does not exist:**
+1. Press ```F2``` to open a new asset on the home page with the serial number of the asset in the search field.
 3. Press ```F1``` or ```F2``` to set the asset's status.
 4. Press ```F3``` or ```F4``` to add a comment. If ```F4``` is pressed, scan the HDD SN.
 5. Press ```Esc``` to save the asset.
