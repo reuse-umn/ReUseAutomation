@@ -20,7 +20,7 @@ There are two configurtion files:
 1. *Monitor Allowlist* - This file contains a list of any monitors that should not be detected by the program. This is useful for preventing the program from detecting the computers's own monitors. 
 2. *Printer Name* - This file contains the name of the printer that the program should print to. 
 
-## (```os_install```)[./os_install]
+## [```os_install```](./os_install)
 Contains the os_clone BASH script used for writing OSs to hard drives.
 ISO files can be found [here](https://drive.google.com/drive/folders/18ejyXTB1vsjlzQfxChp4izIAkGgJYXoE?usp=sharing).
 
