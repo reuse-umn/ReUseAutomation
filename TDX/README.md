@@ -39,10 +39,11 @@ There are several optimizations to this page:
 
 A typical workflow will go as follows:
 1. Open an asset.
-2. Press ```F1``` or ```F2``` to set the asset's status.
-3. Press ```F3``` or ```F4``` to add a comment. If ```F4``` is pressed, scan the HDD SN.
-4. Press ```Esc``` to save the asset.
-5. Press ```Ctrl+W``` to close the asset page.
+4. Press ```Esc``` to edit the asset.
+3. Press ```F1``` or ```F2``` to set the asset's status.
+4. Press ```F3``` or ```F4``` to add a comment. If ```F4``` is pressed, scan the HDD SN.
+5. Press ```Esc``` to save the asset.
+6. Press ```Ctrl+W``` to close the asset page.
 
 
 
