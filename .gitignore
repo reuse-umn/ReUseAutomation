@@ -1,4 +1,5 @@
 *.iso
 **/iso/**
 */__pycache__/*
+venv/
 
