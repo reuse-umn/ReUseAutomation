@@ -4,8 +4,12 @@ from dotenv import load_dotenv
 from datetime import datetime
 import requests
 import os
+import sys
 
-load_dotenv()
+exe_file = os.path.dirname(sys.executable)
+env_path = os.path.join(exe_file, ".env")
+load_dotenv(env_path)
+# load_dotenv()
 
 class TDX:
     def __init__(self, master):
