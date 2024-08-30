@@ -6,11 +6,6 @@ import requests
 import os
 import sys
 
-exe_file = os.path.dirname(sys.executable)
-env_path = os.path.join(exe_file, ".env")
-load_dotenv(env_path)
-# load_dotenv()
-
 class TDX:
     def __init__(self, master):
         self.master = master
@@ -134,10 +129,10 @@ class TDX:
             "Comments": f"---\n {datetime.now()}\nReceived by ReUse.\nOperator: {self.x500_entry.get().strip()}\n---"
         }
         post_headers = {
-            "x-api-key" : os.getenv('TEST_KEY'),
-            "Authorization" : self.basic_auth(os.getenv('TEST_USER'), os.getenv('TEST_PASS'))
+            "x-api-key" : os.getenv('API_KEY'),
+            "Authorization" : self.basic_auth(os.getenv('API_USER'), os.getenv('API_PASS'))
         }
-        response = requests.post(url=os.getenv('TEST_UPDATE_ENDPOINT'), json=post_json, headers=post_headers)
+        response = requests.post(url=os.getenv('UPDATE_ENDPOINT'), json=post_json, headers=post_headers)
         if not response.text:
             print('Sent')
         else:
@@ -151,6 +146,15 @@ class TDX:
 
 
 def main():
+    exe_path = os.path.dirname(sys.executable)
+    env_path = os.path.join(exe_path, ".env")
+    load_dotenv(env_path)
+    # load_dotenv()
+
+    if os.getenv('UPDATE_ENDPOINT') is None:
+        print(f"Environment variables not configured: Please place .env file in {exe_path}.")
+        return
+
     root = tk.Tk()
     app = TDX(root)
     root.mainloop()
