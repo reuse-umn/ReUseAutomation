@@ -12,7 +12,7 @@ Get the API username, password, and key from Davis. Create a file named **.env**
 
 ## Instructions
 
-Run **TDX.exe** in ***./TDX/API/dist/TDX** to start the program.
+Run **TDX.exe** in ***./TDX/API/dist/** to start the program.
 
 A GUI will appear, enter your university internet id to the Operator Section.
 
@@ -23,3 +23,20 @@ To submit an entry select ***Pending Repair*** or ***Pending Disposal***, enter 
 >***Pending Repair***: ```F1```<br>
 >***Pending Disposal***: ```F2```<br>
 >***Submit***: ```Esc```<br>
+
+## Development
+
+### Init
+Install Python, set the working directory to the Git repo, then Run:
+
+>python -m venv ./venv<br>
+>pip install -r ./TDX/API/requirments.txt
+
+### Export to exe
+
+Run:
+
+>cd ./TDX/API<br>
+>pyinstaller -F ./TDX.py
+
+This will create the directories build and dist. The .exe file is in dist.
