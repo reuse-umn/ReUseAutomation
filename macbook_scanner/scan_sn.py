@@ -14,9 +14,10 @@ class sn_scan():
         root.title('MacBook SN Detector')
         self.display_image = tk.Label(root)
         self.show_sn = tk.Entry(root)
+        self.show_model = tk.Entry(root)
         self.current_frame = None
 
-        self.video_button = tk.Button(root, text='Start Video/Capture (Hotkey: Q)', command=self.on_press)
+        self.video_button = tk.Button(root, text='Start Video/Capture (Hotkey: F1)', command=self.on_press)
         self.right_rotate = tk.Button(root, text='Rotate Right', command=self.r_rotate)
         self.left_rotate = tk.Button(root, text='Rotate Left', command=self.l_rotate)
         root.bind('<F1>',self.on_press)
@@ -25,6 +26,7 @@ class sn_scan():
         self.right_rotate.pack(side='right')
         self.left_rotate.pack(side='left')
         self.show_sn.pack()
+        self.show_model.pack()
         self.video_button.pack()
 
 
@@ -48,10 +50,9 @@ class sn_scan():
         UI_image = ImageTk.PhotoImage(PIL_image)
         self.display_image.image = UI_image
         self.display_image.configure(image=UI_image)
+        sn, model = self.query(frame_data.tobytes())
         self.show_sn.delete(0, 'end')
-        self.show_sn.insert('end', 'Loading')
-        sn = self.query(frame_data.tobytes())
-        self.show_sn.delete(0, 'end')
+        self.show_model.delete(0, 'end')
         root.clipboard_clear()
         root.clipboard_append(sn)
         self.display_image.focus()
@@ -59,6 +60,10 @@ class sn_scan():
             self.show_sn.insert('end', 'No SN Found')
         else:
             self.show_sn.insert('end', sn)
+        if model is None:
+            self.show_model.insert('end', 'No Model Found')
+        else:
+            self.show_model.insert('end', model)
 
 
     def query(self, content):
@@ -71,13 +76,15 @@ class sn_scan():
                 f"{response.error.message}\nFor more info on error messages, check: "
                 "https://cloud.google.com/apis/design/errors"
             )
-
+        sn = None
+        model = None
         for text in texts:
             if bool(re.search(r'^[0-9A-Z]{12}$', text.description)):
                 sn = text.description.replace('O','0')
                 sn = sn.replace('I','1')
-                return sn
-        return None
+            elif bool(re.search(r'^A{1}[0-9]{4}$', text.description)):
+                model = text.description
+        return sn, model
 
 
     def on_press(self, *args):
