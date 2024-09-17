@@ -105,11 +105,11 @@ class TDX:
         if invalid:
             return
         HDD_sn = self.hdd_sn_entry.get().strip().upper()
-        HDD_sn = HDD_sn if len(HDD_sn) > 0 else None
+        # HDD_sn = HDD_sn if len(HDD_sn) > 0 else None
         PC_sn = self.serial_number_entry.get().strip().upper()
         print(f"\nSubstate: {self.substate}")
         print(f"Serial Number: {PC_sn}")
-        print(f"HDD SN: {HDD_sn}")
+        print(f"HDD SN: {HDD_sn if HDD_sn else 'N/A'}")
         self.serial_number_entry.delete(0, tk.END)
         self.hdd_sn_entry.delete(0, tk.END)
         self.pending_repair_button.config(bg="white")
@@ -124,11 +124,10 @@ class TDX:
         substate_id = "5210" if self.substate == 'repair' else "5207"
         post_json = {
             "SerialNumber": PC_sn,
+            "HDDSerialNumber": HDD_sn,
             "Substate": substate_id,
             "Comments": f"---\n {datetime.now()}\nReceived by ReUse.\nOperator: {self.x500_entry.get().strip()}\n---"
         }
-        if HDD_sn is not None:
-            post_json['HDDSerialNumber'] = HDD_sn
         post_headers = {
             "x-api-key" : os.getenv('API_KEY'),
             "Authorization" : self.basic_auth(os.getenv('API_USER'), os.getenv('API_PASS'))
@@ -147,13 +146,10 @@ class TDX:
 
 
 def main():
-    exe_path = os.path.dirname(sys.executable)
-    env_path = os.path.join(exe_path, ".env")
-    load_dotenv(env_path)
-    # load_dotenv()
+    load_dotenv()
 
     if os.getenv('UPDATE_ENDPOINT') is None:
-        print(f"Environment variables not configured: Please place .env file in {exe_path}.")
+        print(f"Environment variables not configured: Please place .env file in {os.path.dirname(os.path.realpath(__file__))}.")
         return
 
     root = tk.Tk()
